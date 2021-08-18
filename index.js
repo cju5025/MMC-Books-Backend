@@ -98,7 +98,7 @@ app.post('/expenses', ( request, response ) => {
     return database('expense')
         .insert({
             type: expense.type,
-            amount: parseFloat(expense.amount),
+            amount: expense.amount,
             date: expense.date,
             description: expense.description
         }).returning('*')
