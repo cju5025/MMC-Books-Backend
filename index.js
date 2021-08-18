@@ -92,4 +92,17 @@ app.get('/expenses', ( request, response ) => {
         })
 })
 
+app.post('/expenses', ( request, response ) => {
+    const { expense } = request.body
+    console.log(expense)
+    return database('expense')
+        .insert({
+            type: expense.type,
+            amount: parseFloat(expense.amount),
+            date: expense.date,
+            description: expense.description
+        }).returning('*')
+            .then(console.log)
+})
+
 app.listen(4000, () => console.log('Listening'));
