@@ -20,10 +20,14 @@ Model.knex(database);
 require('dotenv').config();
 
 const User = require('./Models/User');
+const Expense = require('./Models/Expense');
+
 
 app.get('/', ( request, response ) => {
     response.json({"message": "serving" })
 })
+
+// user routes
 
 app.post('/users', ( request, response ) => {
     const { user } = request.body
@@ -76,6 +80,15 @@ app.get('/users', ( request, response ) => {
     User.query()
         .then(users => {
             response.json({ users })
+        })
+})
+
+// expense routes
+
+app.get('/expenses', ( request, response ) => {
+    Expense.query()
+        .then(expenses => {
+            response.json({ expenses })
         })
 })
 
