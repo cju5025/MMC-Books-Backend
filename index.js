@@ -105,4 +105,10 @@ app.post('/expenses', ( request, response ) => {
             .then(console.log)
 })
 
+app.delete('/expenses/:id', ( request, response, ) => {
+    const id = request.params.id
+    Expense.query().deleteById(id)
+        .then(expense => response.json({ expense }))
+})
+
 app.listen(4000, () => console.log('Listening'));
