@@ -94,7 +94,6 @@ app.get('/expenses', ( request, response ) => {
 
 app.post('/expenses', ( request, response ) => {
     const { expense } = request.body
-    console.log(expense)
     return database('expense')
         .insert({
             type: expense.type,
